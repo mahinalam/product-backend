@@ -18,6 +18,7 @@ const ZodProductSchema = z.object({
   description: z.string(),
   price: z.number().nonnegative('Price cannot be negative'),
   category: z.string(),
+  //   tags: z.array(z.string()),
   tags: z.array(z.string()),
   variants: z.array(ZodVariantSchema),
   inventory: ZodInventorySchema,

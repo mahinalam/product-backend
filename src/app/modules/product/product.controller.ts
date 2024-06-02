@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
-import ZodProductSchema from './product.validation'
 import { productServices } from './product.services'
+import ZodProductSchema from './product.validation'
 
 
 //create product
@@ -69,10 +69,35 @@ const getAllProducts = async (req: Request, res: Response) => {
     }
   }
   
-
+// update product
+const updateProduct = async (req: Request, res: Response) => {
+    try {
+      const updatedData = req.body;
+      const zodParseData = ZodProductSchema.parse(updatedData)
+      const findDoc = await productServices.updateProductFromDB(
+        req.params.productId,updatedData
+  
+      )
+      // console.log('id from product controller', req.params.id)
+      if (findDoc) {
+        res.status(200).json({
+          success: true,
+          message: 'Product updated successfully!',
+          data: findDoc,
+        })
+      }
+    } catch (err) {
+      console.log(err)
+      res.status(404).json({
+        success: false,
+        message: 'Failed to Update product!',
+      })
+    }
+  }
 
 export const productController = {
   createProduct,
   getAllProducts,
-  getSingleProduct
+  getSingleProduct,
+  updateProduct
 }

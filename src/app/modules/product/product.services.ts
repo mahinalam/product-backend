@@ -11,11 +11,12 @@ const createProductIntoDB = async (product: IProduct) => {
   return result
 }
 
-//retrieve all products from db
-const getAllProductsFromDB = async () => {
-  const result = await Product.find()
-  return result
-}
+const getAllProductsFromDB = async (
+    query: object,
+  ): Promise<IProduct[] | null> => {
+    const result = await Product.find(query);
+    return result;
+  };
 
 //retrieve a specific product from db
 const getSingleProductFromDB = async (id: string) => {
@@ -40,6 +41,7 @@ const deleteProductFromDB = async (id: string) => {
     const result = await Product.deleteOne({ _id: id })
     return result
   }
+
 
 export const productServices = {
   createProductIntoDB,

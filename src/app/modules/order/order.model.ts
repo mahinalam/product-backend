@@ -17,8 +17,6 @@ const orderSchema = new Schema<IOrder>({
     type: Number,
     required: [true, 'price is required'],
     trim: true,
-    min: [50, 'price should more than 50'],
-    max: [250, 'price should less than 250'],
   },
   quantity: {
     type: Number,
@@ -30,7 +28,6 @@ const orderSchema = new Schema<IOrder>({
 orderSchema.pre('save', async function (next) {
   try {
     const product: any = await Product.findById({ _id: this.productId })
-    console.log('product from', product)
 
     if (!product) {
       return next(new Error('Product not found'))
@@ -39,7 +36,7 @@ orderSchema.pre('save', async function (next) {
     if (this.quantity > product?.inventory.quantity) {
       return next(new Error('Insufficient quantity available in inventory'))
     }
-    next()
+   return next()
   } catch (err) {
     throw new Error('Failed to create Order!')
   }

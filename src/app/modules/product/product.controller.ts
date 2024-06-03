@@ -141,12 +141,12 @@ const deleteProduct = async (req: Request, res: Response) => {
   }
 }
 
+  
 
 export const productController = {
   createProduct,
   getAllProducts,
   getSingleProduct,
   updateProduct,
-  deleteProduct,
-  
+  deleteProduct
 }

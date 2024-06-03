@@ -14,5 +14,5 @@ const getAllOrdersFromDB = async (query: any) => {
 
 export const orderServices = {
   createOrderIntoDB,
-  getAllOrdersFromDB
+  getAllOrdersFromDB,
 }

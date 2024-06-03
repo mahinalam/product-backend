@@ -8,7 +8,7 @@ const ZodVariantSchema = z.object({
 const ZodInventorySchema = z.object({
   quantity: z
     .number()
-    .max(200, 'Quantity can not be more than 200')
+    .max(500, 'Quantity can not be more than 500')
     .nonnegative('Quantity cannot be negative'),
   inStock: z.boolean(),
 })

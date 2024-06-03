@@ -25,7 +25,7 @@ const inventorySchema = new Schema<IInventory>({
   quantity: {
     type: Number,
     required: [true, 'quantity is required'],
-    max: 200,
+    trim: true
   },
   inStock: {
     type: Boolean,

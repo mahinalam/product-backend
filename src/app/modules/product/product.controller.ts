@@ -15,8 +15,7 @@ const createProduct = async (req: Request, res: Response) => {
         data: result,
       })
     }
-  } catch (err) {
-    console.log(err)
+  } catch (err: any) {
     res.status(404).json({
       success: false,
       message: 'Failed to create product!',
@@ -109,7 +108,6 @@ const updateProduct = async (req: Request, res: Response) => {
       })
     }
   } catch (err) {
-    console.log(err)
     res.status(404).json({
       success: false,
       message: 'Failed to Update product!',
@@ -122,7 +120,7 @@ const deleteProduct = async (req: Request, res: Response) => {
     const result = await productServices.deleteProductFromDB(
       req.params.productId,
     )
-    console.log('deleted result', result)
+
 
     if (result.deletedCount > 0) {
       res.status(200).json({

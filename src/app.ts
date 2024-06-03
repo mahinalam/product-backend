@@ -1,4 +1,3 @@
-// const express = require('express')
 import express, { Application, Request, Response } from 'express'
 import cors from 'cors'
 import { productRoute } from './app/modules/product/product.route'
@@ -12,7 +11,9 @@ app.use(cors())
 
 app.use('/api/products', productRoute)
 app.use('/api/orders', orderRoute)
+
 app.use(notFoundRoute)
+
 
 
 export default app

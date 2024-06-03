@@ -27,7 +27,7 @@ const orderSchema = new Schema<IOrder>({
 
 orderSchema.pre('save', async function (next) {
   try {
-    const product: any = await Product.findById({ _id: this.productId })
+    const product = await Product.findById({ _id: this.productId })
 
     if (!product) {
       return next(new Error('Product not found'))
@@ -44,7 +44,7 @@ orderSchema.pre('save', async function (next) {
 
 // Post-save middleware to update inventory
 orderSchema.post('save', async function (doc, next) {
-  const product: any = await Product.findById({ _id: doc.productId })
+  const product = await Product.findById({ _id: doc.productId })
 
   if (product) {
     product.inventory.quantity -= doc.quantity

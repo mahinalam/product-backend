@@ -24,41 +24,6 @@ const createProduct = async (req: Request, res: Response) => {
   }
 }
 
-//get all products
-// const getAllProducts = async (req: Request, res: Response) => {
-//   try {
-//     const query = {}
-
-//     // if (query) {
-//       const searchResult = await productServices.getAllProductsFromDB(query)
-//       if (searchResult && searchResult.length > 0) {
-//         res.status(200).json({
-//           success: true,
-//           message: `Products matching search term ${query} fetched successfully!`,
-//           data: searchResult,
-//         })
-//       }
-//     }
-//     //  else {
-//       const result = await productServices.getAllProductsFromDB()
-//       if (result) {
-//         const result = await productServices.getAllProductsFromDB()
-//         if (result) {
-//           res.status(200).json({
-//             success: true,
-//             message: 'Products fetched successfully!',
-//             data: result,
-//           })
-//         }
-//       }
-//     // }
-//   } catch (err) {
-//     res.status(400).json({
-//       success: false,
-//       message: 'something went wrong'
-//     })
-//   }
-// }
 
 // Fetch all products from the database
 const getAllProducts = async (req: Request, res: Response): Promise<void> => {
